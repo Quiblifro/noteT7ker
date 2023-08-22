@@ -1,9 +1,10 @@
 from peewee import *
 from datetime import datetime
-from base_model import BaseModel, dbhandle
+from .base_model import BaseModel, dbhandle
 
 class User(BaseModel):
     id = PrimaryKeyField(null=False)
+    telegram_id = IntegerField()
     name = CharField(max_length=150)
  
     created_at = DateTimeField(default = datetime.now())
