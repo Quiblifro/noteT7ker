@@ -7,8 +7,8 @@ class User(BaseModel):
     telegram_id = IntegerField()
     name = CharField(max_length=150)
  
-    created_at = DateTimeField(default = datetime.now())
-    updated_at = DateTimeField(default = datetime.now())
+    created_at = DateTimeField(default = datetime.now)
+    updated_at = DateTimeField(default = datetime.now)
 
     class Meta:
         db_table = "users"

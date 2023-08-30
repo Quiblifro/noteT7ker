@@ -1,7 +1,21 @@
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove
-menu = [
-    [InlineKeyboardButton(text="📝 Добавить заметку", callback_data="addnote"),
-    InlineKeyboardButton(text="🔎 Посмотреть заметки", callback_data="getnote")],
+from aiogram.types import  ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
+from callbacks import NotesCallbackFactory
 
+buttons = [
+    [
+        KeyboardButton(text="📝 Добавить заметку"),
+        KeyboardButton(text="🔎 Посмотреть заметки")
+    ],
 ]
-menu = InlineKeyboardMarkup(inline_keyboard=menu)
+main_menu = ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True, input_field_placeholder="Выберите команду")
+
+def note_menu(id):
+
+    buttons = [
+        [
+            InlineKeyboardButton(text="✏️", callback_data=NotesCallbackFactory(action="edit", id = id)),
+            InlineKeyboardButton(text="❌", callback_data=NotesCallbackFactory(action="remove", id = id))
+        ]
+    ]
+
+    return InlineKeyboardMarkup(inline_keyboard=buttons)
