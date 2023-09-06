@@ -6,3 +6,5 @@ class NoteState(StatesGroup):
 class EditNoteState(StatesGroup):
     id = State()
     text = State()
+    message = State()
+    

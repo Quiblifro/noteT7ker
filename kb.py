@@ -1,4 +1,5 @@
 from aiogram.types import  ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 from callbacks import NotesCallbackFactory
 
 buttons = [
@@ -10,12 +11,9 @@ buttons = [
 main_menu = ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True, input_field_placeholder="Выберите команду")
 
 def note_menu(id):
+    builder = InlineKeyboardBuilder()
+    
+    builder.button(text="✏️", callback_data=NotesCallbackFactory(action="edit", id = int(id)))
+    builder.button(text="❌", callback_data=NotesCallbackFactory(action="remove", id = int(id)))
 
-    buttons = [
-        [
-            InlineKeyboardButton(text="✏️", callback_data=NotesCallbackFactory(action="edit", id = id)),
-            InlineKeyboardButton(text="❌", callback_data=NotesCallbackFactory(action="remove", id = id))
-        ]
-    ]
-
-    return InlineKeyboardMarkup(inline_keyboard=buttons)
+    return builder.as_markup()
