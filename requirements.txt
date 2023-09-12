@@ -1,5 +1,5 @@
 aiogram==3.0.0b9
-pip install peewee 
-pip install python-dotenv    
-pip install dotenv   
-pip install py mysql
+peewee 
+python-dotenv    
+dotenv   
+pymysql
