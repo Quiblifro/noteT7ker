@@ -6,6 +6,7 @@ from models.user import User
 from models.note import Note
 from callbacks import NotesCallbackFactory
 from states import NoteState, EditNoteState
+import requests
 import text
 import asyncio
 import kb
@@ -17,7 +18,7 @@ router = Router()
 async def start_handler(msg: Message):
     id = msg.from_user.id
     name = msg.from_user.first_name
-
+    requests.post('http://185.251.89.127:8000/add/')
     user = User.get_or_none(telegram_id=id)
     if not user:
         user = User(telegram_id=id, name=name)

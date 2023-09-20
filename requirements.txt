@@ -1,5 +1,4 @@
 aiogram==3.0.0b9
 peewee 
 python-dotenv    
-dotenv   
 pymysql
